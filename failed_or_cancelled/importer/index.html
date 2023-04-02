@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn js Again - 1</title>
+</head>
+
+<body>
+    <h1>Hello, World</h1>
+
+    <!-- show the first script -->
+    <textarea id="code1" class="textarea-class"></textarea>
+    <script>
+        // TODO: this code will be removed.
+        document.addEventListener('DOMContentLoaded', function () {
+            // Code to run when the DOM has been loaded
+
+            // Get all script and textarea elements with the desired class
+            let scriptElements = document.querySelectorAll('.script-class');
+            let textareaElements = document.querySelectorAll('.textarea-class');
+            let divElements = document.querySelectorAll('.div-class');
+
+            // Loop through each script element and paste its text into the corresponding textarea
+            scriptElements.forEach((script, index) => {
+                textareaElements[index].value = script.textContent;
+            });
+        });
+
+    </script>
+    
+</body>
+<script class="script-class" src="./types_declarations_and_print_var_names.js"></script>
+</html>
