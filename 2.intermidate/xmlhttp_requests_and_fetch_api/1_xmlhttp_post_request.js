@@ -1,31 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
-	run();
-});
-function test_run() {
-	const testMainDivExists = () => {
-		return testHTMLElementExists('#xmlhttp_get_request');
-	}
-	const testMainDivEqualsHTML = () => {
-		const mainDivId = 'xmlhttp_get_request';
-		const factDivId = 'fact';
-		const factBtnId = 'fact-btn';
-		const html = `
-		  <div id="${mainDivId}">
-			<div id="${factDivId}"></div>
-			<button id="${factBtnId}">Show Fact</button>
-		  </div>
-		`;
-		return testHTMLElementEqualsHTML('#xmlhttp_get_request', html);
-	}
+	// ^ on load: =====================================================
+	// Prepare HTML template & append it
+	const mainDivId = '1_xmlhttp_get_request.js';
+	const factDivId = 'fact';
+	const factBtnId = 'fact-btn';
+	const html = `
+	  <div id="${mainDivId}">
+		<div id="${factDivId}"></div>
+		<button id="${factBtnId}">Show Fact</button>
+	  </div>
+	`;
+	document.body.insertAdjacentHTML('beforeend', html);
 
-	const tests = [
-		testMainDivExists,
-		testMainDivEqualsHTML,
-	];
+	// setup event listeners
+	const factBtn = document.querySelector(`#${factBtnId}`);
+	factBtn.addEventListener('click', showFact);
 
-	return run_tests(tests);
-}
-function run() {
+
 	// ^ functions: =====================================================
 
 	// Displays a random cat fact when the button is clicked
@@ -61,21 +52,4 @@ function run() {
 		const resultDiv = document.querySelector(`#${factDivId}`);
 		resultDiv.innerHTML = error.message;
 	}
-
-	// ^ on load: =====================================================
-	// Prepare HTML template & append it
-	const mainDivId = 'xmlhttp_get_request';
-	const factDivId = 'fact';
-	const factBtnId = 'fact-btn';
-	const html = `
-	  <div id="${mainDivId}">
-		<div id="${factDivId}"></div>
-		<button id="${factBtnId}">Show Fact</button>
-	  </div>
-	`;
-	document.body.insertAdjacentHTML('beforeend', html);
-
-	// setup event listeners
-	const factBtn = document.querySelector(`#${factBtnId}`);
-	factBtn.addEventListener('click', showFact);
-}
+});
